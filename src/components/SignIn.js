@@ -19,6 +19,8 @@ const byPropKey = (propertyName, value) => () => ({
 });
 
 const INITIAL_STATE = {
+  firstName: '',
+  lastName: '',
   email: '',
   password: '',
   error: null,

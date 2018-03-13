@@ -17,6 +17,8 @@ const SignUpPage = ({ history }) =>
 // ===========================================
 // inititalise the component
 const INITIAL_STATE = {
+  firstName: '',
+  lastName: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -41,6 +43,8 @@ class SignUpForm extends Component {
   onSubmit = (event) => {
 
     const {
+      firstName,
+      lastName,
       email,
       passwordOne,
       selectedValue,
@@ -54,7 +58,7 @@ class SignUpForm extends Component {
         .then(authUser => {
 
           // Create a user in your own accessible Firebase Database too
-          db.doCreateUser(authUser.uid, email, selectedValue)
+          db.doCreateUser(authUser.uid, email, selectedValue, firstName, lastName)
             .then(() => {
               this.setState(() => ({ ...INITIAL_STATE }));
               history.push(routes.HOME);
@@ -74,6 +78,8 @@ class SignUpForm extends Component {
 
   render() {
     const {
+      firstName,
+      lastName,
       email,
       passwordOne,
       passwordTwo,
@@ -90,6 +96,18 @@ class SignUpForm extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <input
+            value={firstName}
+            onChange={event => this.setState(byPropKey('firstName', event.target.value))}
+            type="text"
+            placeholder="First Name e.g. Jane"
+          />
+          <input
+            value={lastName}
+            onChange={event => this.setState(byPropKey('lastName', event.target.value))}
+            type="text"
+            placeholder="Last Name e.g. Doe"
+          />
+          <input
             value={email}
             onChange={event => this.setState(byPropKey('email', event.target.value))}
             type="text"
@@ -99,7 +117,7 @@ class SignUpForm extends Component {
             value={passwordOne}
             onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
             type="password"
-            placeholder="Password"
+            placeholder="Password (more than 6 characters)"
           />
           <input
             value={passwordTwo}

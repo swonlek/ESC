@@ -12,6 +12,10 @@ import SignInPage from './SignIn';
 import HomePage from './Home';
 import AccountPage from './Account';
 import ProfPage from './Professor';
+import ProfFeedbackPage from './professor/Feedback';
+import StudentFeedbackPage from './student/FeedbackForm';
+// import StudentGrades from './student/Performance';
+import LecturePage from './Lecture';
 
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
@@ -27,8 +31,12 @@ const App = () =>
       <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
       <Route exact path={routes.HOME} component={() => <HomePage />} />
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
-      <Route exact path={routes.PROF} component={() => <ProfPage />} />    
+      <Route exact path={routes.PROF} component={() => <ProfPage />} /> 
+      <Route exact path={routes.FEEDBACK_PROF} component={() => <ProfFeedbackPage />} />
+      <Route exact path={routes.FEEDBACK_STUD} component={() => <StudentFeedbackPage />} /> 
+      <Route exact path={routes.LECTURE} component={() => <LecturePage />} />
       </div>
   </Router>
+//      <Route exact path={routes.GRADES_STUD} component={() => <StudentGrades />} />      
 
 export default withAuthentication(App);
