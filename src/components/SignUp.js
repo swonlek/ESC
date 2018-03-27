@@ -4,12 +4,14 @@ import {
   Link,
   withRouter, } from 'react-router-dom';
 import { auth, db } from '../firebase';
+import {Button, Grid, Row, Col} from "react-bootstrap";
+import {Card, CardActions, CardHeader, TextField} from 'material-ui';
 import * as routes from '../constants/routes';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // displayed content
 const SignUpPage = ({ history }) =>
   <div>
-    <h1>Sign Up</h1>
     <SignUpForm history={history} />
   </div>
 
@@ -94,7 +96,9 @@ class SignUpForm extends Component {
 
     return (
       <div>
+<MuiThemeProvider>
         <form onSubmit={this.onSubmit}>
+<<<<<<< HEAD
           <input
             value={firstName}
             onChange={event => this.setState(byPropKey('firstName', event.target.value))}
@@ -109,34 +113,118 @@ class SignUpForm extends Component {
           />
           <input
             value={email}
+=======
+          { error && <p>{error.message}</p> }
+          <Row>
+            <Col sm={4}>
+              <Grid>
+                <Row className="Show-grid">
+                  <Col md={4}>
+                    <Card>
+                      <CardHeader
+                        title="WELCOME BACK"
+                        subtitle="Please login"
+                      />
+                      <Grid>
+                      <Grid>
+                      <Grid>
+                      <h4>Username</h4>
+                      <Grid>
+                        <TextField
+                         value={email}
+>>>>>>> b5d349c3b627ea13f475d2e8788247d574d9777b
             onChange={event => this.setState(byPropKey('email', event.target.value))}
             type="text"
             placeholder="Email Address"
-          />
-          <input
-            value={passwordOne}
+                        >
+                      </TextField>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      <Grid>
+                      <Grid>
+                      <Grid>
+                      <h4>Password</h4>
+                      <Grid>
+                        <TextField
+                          value={passwordOne}
             onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
             type="password"
+<<<<<<< HEAD
             placeholder="Password (more than 6 characters)"
           />
           <input
             value={passwordTwo}
+=======
+            placeholder="Password"
+                        >
+                      </TextField>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      <Grid>
+                      <Grid>
+                      <Grid>
+                      <h4>Confirm Password</h4>
+                      <Grid>
+                        <TextField
+                        value={passwordTwo}
+>>>>>>> b5d349c3b627ea13f475d2e8788247d574d9777b
             onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
             type="password"
             placeholder="Confirm Password"
-          />
-          <RadioGroup name="role" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+                        >
+                      </TextField>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      <Grid>
+                      <Grid>
+                      <Grid>
+                      
+                      <Grid>
+                         <RadioGroup name="role" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
             <Radio value="Student" />Student
             <Radio value="Professor" />Professor
           </RadioGroup>
-          <button disabled={isInvalid} type="submit">
-            Sign Up
-          </button>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      </Grid>
+                      <CardActions>
+                        <br/>
+                        <Grid>
+                        <Grid>
+                        <Grid>
+                        <Grid>
+                        <Grid>
+                        <Col md={2} sm={1}>
+                          <Button 
+                            bsStyle="info" block type="submit">
+                            Sign Up</Button>
+                        </Col>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
+                        </Grid>
 
-          { error && <p>{error.message}</p> }
-
-
+                        <Col sm={2}/>
+                      </CardActions>
+                      <br />
+                      <br />
+                    </Card>
+                  </Col>
+                  <Col sm={4} />
+                </Row>
+              </Grid>
+            </Col>
+          </Row>
         </form>
+      </MuiThemeProvider>
       </div>
     );
   }
